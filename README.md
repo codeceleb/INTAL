@@ -15,25 +15,4 @@ Add support for Big Integers (numbers greater than 18446744073709551615) in C al
 
 
 Languages like C++/Java support classes like BigIntegers allowing developers to utilize numbers with up to 100 digits. INTAL aims to provide support up to 1000 digits in the C language along with basic mathematical operations (comparison, addition, subtraction, multiplication) and some mathematical functions (Fibonacci series, factorial). 
-Project Stages 
-The project consists of the following stages: 
 
-### High-Level Approach 
-• Write a function to declare and initialize INTALs 
-• Write a function to compare INTALs; returns equal, lesser than or greater than comparisons of inputted numbers. 
-• Implement basic arithmetic operations on INTAL: Addition, Subtraction, Multiplication • Implement applications of INTAL: Fibonacci number, Factorial 
-### Applications 
-• Calculate factorial of very large integers 
-• Calculate the very large nth Fibonacci number 
-• Calculate the binomial coefficient of very large numbers 
-• Perform binary exponentiation on very large numbers or raise numbers to very large powers 
-• Greatest Common Divisor
-
-### PES1201801295.c
-Contains implementation of all the fuctions.
-
-### intal_sampletest.c
-Contains the client side code to run the implementation file.
-
-### PES1201801295.txt
-Contains a brief documentation of all the functions.
