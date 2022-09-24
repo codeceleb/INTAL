@@ -28,12 +28,3 @@ The project consists of the following stages:
 • Calculate the binomial coefficient of very large numbers 
 • Perform binary exponentiation on very large numbers or raise numbers to very large powers 
 • Greatest Common Divisor
-
-### PES1201801295.c
-Contains implementation of all the fuctions.
-
-### intal_sampletest.c 
-Contains the client side code to run the implementation file.
-
-### PES1201801295.txt
-Contains a brief documentation of all the functions.
