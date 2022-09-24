@@ -1,34 +1,18 @@
-// Library "intal" - Integer of arbitray length
-// intal is a nonnegative integer of arbitrary length (not more than 1000 decimal digits).
-// The integer is stored as a null terminated string of ASCII characters.
-// String of decimal digits ('0' thru '9') are stored in big endian style.
-// That is, the most significant digit is at the head of the string.
-// Eg: Integer 25 is stored in str as '2' at str[0], '5' at str[1], and null char at str[2].
 
-// DO NOT modify this header file.
-// Your deliverable is the implementation file.
-// The implementation file has the definition of the functions decalred here.
-// You can write some of your own helper functions, keep them "static".
-// Use the sample test file (that has the main function) to test your implementation.
-
-// To generate your own testcases, you can use https://www.omnicalculator.com/math
-
-// Returns the sum of two intals.
-//DONE
 char* intal_add(const char* intal1, const char* intal2);
 
 // Returns the comparison value of two intals.
 // Returns 0 when both are equal.
 // Returns +1 when intal1 is greater, and -1 when intal2 is greater.
-//DONE
+
 int intal_compare(const char* intal1, const char* intal2);
 
 // Returns the difference (obviously, nonnegative) of two intals.
-//DONE
+
 char* intal_diff(const char* intal1, const char* intal2);
 
 // Returns the product of two intals.
-//DONE
+
 char* intal_multiply(const char* intal1, const char* intal2);
 
 // Returns intal1 mod intal2
@@ -38,9 +22,8 @@ char* intal_multiply(const char* intal1, const char* intal2);
 // O(intal1 / intal2) time taking algorithm may exceed time limit.
 // O(intal1 / intal2) algorithm may repeatedly subtract intal2 from intal1.
 // That will take intal1/intal2 iterations.
-// You need to design a O(log intal1) time taking algorithm.
-// Generate your own testcases at https://www.omnicalculator.com/math/modulo
-//DONE
+
+
 char* intal_mod(const char* intal1, const char* intal2);
 
 // Returns intal1 ^ intal2.
