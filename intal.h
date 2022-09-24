@@ -1,100 +1,58 @@
+//intal.h is an header for the library of integers of arbitrary length.
+#include <stddef.h>
 
-char* intal_add(const char* intal1, const char* intal2);
+// intal is an integer of arbitrary length.
+// Field s stores a null-terminated string of decimal digits preceded by
+// a + or sign indicating positive and negative integers.
+// Field n represents the number of decimal digits excluding the sign.
+typedef struct intal {
+	char *s; //null terminated string of decimal digits preceded by a +/- sign
+	int n; //length of the integer in terms of decimal digits
+} intal;
 
-// Returns the comparison value of two intals.
-// Returns 0 when both are equal.
-// Returns +1 when intal1 is greater, and -1 when intal2 is greater.
+// Creates and returns a pointer to a new intal initialized to zero.
+// Initial values of i would be "+0" and n == 1.
+intal* create_intal();
 
-int intal_compare(const char* intal1, const char* intal2);
+// Deletes an intal, especially the memory allocated to it.
+// i is a pointer to an intal to be deleted. It also resets *i to null.
+void delete_intal(intal** i);
 
-// Returns the difference (obviously, nonnegative) of two intals.
+// Reads an intal from str into intal struct.
+// str should be a null-terminated string just like s inside intal except that
+// a postive integer could start without a + sign.
+void read_intal(intal* i, char* str);
 
-char* intal_diff(const char* intal1, const char* intal2);
+// Prints the integer into stdout.
+// It's just printf of s in intal (with format specifier %s) except that 
+// it doesn't print the sign in case of positive integer.
+void print_intal(intal* i);
 
-// Returns the product of two intals.
+// Adds two intals a and b, and returns the sum.
+// Parameters a and b are not modified. Sum is a new intal.
+intal* add_intal(intal* a, intal* b);
 
-char* intal_multiply(const char* intal1, const char* intal2);
+// Subtracts intal b from intal a. That is, finds a-b and returns the answer.
+// Parameters a and b are not modified. a-b is a new intal.
+intal* subtract_intal(intal* a, intal* b);
 
-// Returns intal1 mod intal2
-// The mod value should be in the range [0, intal2 - 1].
-// intal2 > 1
-// Implement a O(log intal1) time taking algorithm.
-// O(intal1 / intal2) time taking algorithm may exceed time limit.
-// O(intal1 / intal2) algorithm may repeatedly subtract intal2 from intal1.
-// That will take intal1/intal2 iterations.
+// Multiplys two intals a and b, and returns the product.
+// Parameters a and b are not modified. Product is a new intal.
+intal* multiply_intal(intal* a, intal* b);
 
+// Divides intal a from intal b and returns the quotient. 
+// That is, finds floor(a/b), which is aka integer division.
+// Parameters a and b are not modified. Floor(a/b) is a new intal.
+intal* divide_intal(intal* a, intal* b);
 
-char* intal_mod(const char* intal1, const char* intal2);
+// Finds a^b, which a to the power of b and returns the result. 
+// The result could be undefined if the intal b is negative.
+// Parameters a and b are not modified. The result is a new intal.
+intal* pow_intal(intal* a, intal* b);
 
-// Returns intal1 ^ intal2.
-// Let 0 ^ n = 0, where n is an intal.
-// Implement a O(log n) intal multiplications algorithm.
-// 2^3000 has less than 1000 decimal digits. 3000 intal multiplications may exceed time limit.
-//DONE
-char* intal_pow(const char* intal1, unsigned int n);
+//adds zeroes to the number which has less digits so as to make them of equal length
+char * padZero(intal* i,int length);
 
-// Returns Greatest Common Devisor of intal1 and intal2.
-// Let GCD be "0" if both intal1 and intal2 are "0" even though it is undefined, mathematically.
-// Use Euclid's theorem to not exceed the time limit.
-//DONE
-char* intal_gcd(const char* intal1, const char* intal2);
-
-// Returns nth fibonacci number.
-// intal_fibonacci(0) = intal "0".
-// intal_fibonacci(1) = intal "1".
-//DONE
-char* intal_fibonacci(unsigned int n);
-
-// Returns the factorial of n.
-//DONE
-char* intal_factorial(unsigned int n);
-
-// Returns the Binomial Coefficient C(n,k).
-// 0 <= k <= n
-// C(n,k) < 10^1000 because the returning value is expected to be less than 10^1000.
-// Use the Pascal's identity C(n,k) = C(n-1,k) + C(n-1,k-1)
-// Make sure the intermediate intal values do not cross C(n,k).
-// Use Dynamic Programming. Use extra space of not more than O(k) number of intals. Do not allocate the whole O(nk) DP table.
-// Don't let C(1000,900) take more time than C(1000,500). Time limit may exceed otherwise.
-char* intal_bincoeff(unsigned int n, unsigned int k);
-
-// Returns the offset of the largest intal in the array.
-// Return the smallest offset if there are multiple occurrences.
-// 1 <= n <= 1000
-//DONE
-int intal_max(char **arr, int n);
-
-// Returns the offset of the smallest intal in the array.
-// Return the smallest offset if there are multiple occurrences.
-// 1 <= n <= 1000
-//DONE
-int intal_min(char **arr, int n);
-
-// Returns the offset of the first occurrence of the key intal in the array.
-// Returns -1 if the key is not found.
-// 1 <= n <= 1000
-//DONE
-int intal_search(char **arr, int n, const char* key);
-
-// Returns the offset of the first occurrence of the key intal in the SORTED array.
-// Returns -1 if the key is not found.
-// The array is sorted in nondecreasing order.
-// 1 <= n <= 1000
-// The implementation should be a O(log n) algorithm.
-//DONE
-int intal_binsearch(char **arr, int n, const char* key);
-
-// Sorts the array of n intals.
-// 1 <= n <= 1000
-// The implementation should be a O(n log n) algorithm.
-//DONE
-void intal_sort(char **arr, int n);
-
-// Coin-Row Problem - Dynamic Programming Solution
-// There is a row of n coins whose values are some positive integers C[0..n-1].
-// The goal is to pick up the maximum amount of money subject to the constraint that
-// no two coins adjacent in the initial row can be picked up.
-// 1 <= n <= 1000
-// The implementation should be O(n) time and O(1) extra space even though the DP table may be of O(n) size.
-// Eg: Coins = [10, 2, 4, 6, 3, 9, 5] returns 25
-char* coin_row_problem(char **arr, int n);
+//removes padded zeroes
+//for the smaller string
+char *remove_zero(char * a);
