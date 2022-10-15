@@ -58,6 +58,8 @@ int main() {
 			print_intal(pow_intal(i1,i2));
 			printf("\n");
 			break;
+			
+		default: printf("\nerror \n");
 	
 	}
 	delete_intal(&i1);
