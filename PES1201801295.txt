@@ -8,8 +8,8 @@ int main() {
 	intal* i2 = create_intal();
 	
 
-	read_intal(i1, "140");
-	read_intal(i2, "25");
+	read_intal(i1, "140000000000000088888888777700000000656654644");
+	read_intal(i2, "2999999999999999997777777777888888888888888885");
 
 	
 	printf("i1 = ");
